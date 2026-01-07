@@ -86,6 +86,14 @@
 3.  **质量攻坚 (Quality Assurance)**
     * **覆盖率修复**: 发现并修复了 `norm_robust` 中未被测试覆盖的输入类型检查 (`stopifnot`)，将覆盖率从 95% 提升回 **100%**。
     * **边界防御**: 为所有新算法添加了零方差 (Zero Variance/Range) 的防御逻辑。
+    
+### 🔧 基础设施升级 (Infrastructure)
+
+* **Rcpp 环境配置**:
+    * 修改 `DESCRIPTION` 添加 `Imports: Rcpp` 和 `LinkingTo: Rcpp`。
+    * 创建 `src/` 目录和 `.gitignore`。
+    * 创建 `R/prepr-package.R` 用于管理命名空间。
+    * **状态**: 已配置但处于“休眠”状态 (Commented out `@useDynLib`)，待未来引入 C++ 代码时激活。
 
 ### 📝 经验总结 (Learnings)
 
