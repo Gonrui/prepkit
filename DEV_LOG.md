@@ -105,3 +105,53 @@
 * **Day 6**: 非线性变换 (Non-linear Transformations)
     * 挑战 **Box-Cox 变换** (`trans_boxcox`)。
     * 这是包里第一个需要“参数自动优化” (Optimization) 的高级算法，难度会提升一个台阶。
+    
+## Day 6: 非线性变换、可视化与学术加固 (2026-01-08)
+
+**耗时**: 4 小时
+**状态**: ✅ 核心算法库 (100%) + 可视化系统 (100%)
+
+### 🚀 核心进展 (Key Progress)
+
+1.  **非线性变换算法矩阵 (The Non-linear Suite)**
+    * **`trans_boxcox`**: 实现了基于 MLE (极大似然估计) 的 $\lambda$ 自动搜索，内建 **Auto-shift** 机制自动处理非正数。
+    * **`trans_yeojohnson`**: 实现了 Box-Cox 的进阶版，原生支持负数数据的幂变换。
+    * **`trans_log`**: 实现了带 Offset 的对数变换，作为基准非线性处理方案。
+    * **`norm_l2`**: 实现了 L2 归一化 (Spatial Sign)，为未来处理高维稀疏数据奠定基础。
+
+2.  **可视化反馈系统 (Visual Feedback)**
+    * **`pp_plot`**: 基于 `ggplot2` 构建了对比绘图函数。
+    * **功能**: 自动通过分面 (Facet) 展示变换前后的直方图与密度曲线，让用户直观验证“正态化”效果。
+    * **解决痛点**: 解决了 `NAMESPACE` 未注册导致找不到 `ggplot` 函数的问题。
+
+3.  **学术加固 (Academic Rigor)**
+    * 全面补全了算法的 APA 格式参考文献 (`@references`)。
+    * 引用源包括 *J. R. Stat. Soc.* (Box-Cox), *Biometrika* (Yeo-Johnson), *Biometrics* (Bartlett) 及数据挖掘经典教材。
+    * **意义**: 确保包符合 JOSS 和 R Journal 的出版标准，体现“有理有据”的科研属性。
+
+### 🧠 架构决策与工程哲学 (Architecture & Philosophy)
+
+* **数据折叠论 (The Art of Folding)**: 确立了对高维数据的核心理解——内存是线性的绳子，Tensor 是折叠的艺术。未来将通过 Rcpp + 稀疏矩阵解决内存瓶颈。
+* **混合后端策略 (Hybrid Backend)**: 制定了长期演进路线：
+    * **Phase 1 (Current)**: 原生 R 实现，侧重稳定性、可读性和原子化 (Atomic)。
+    * **Phase 2 (Future)**: 引入 Rcpp 后端，针对大数据量自动切换引擎。
+* **原子化设计**: 坚持 `trans_*` 和 `norm_*` 函数只处理向量。矩阵和数据框的分发逻辑将由上层 Wrapper 处理，保持底层函数的纯粹性。
+
+### 📝 经验总结 (Learnings)
+
+* **Optimization**: R 的 `optimize()` 函数在单参数搜索中表现稳定。
+* **Attributes**: 使用 `attr(res, "param")` 携带元数据（如 lambda），既保留了向量的计算特性，又保留了参数信息。
+* **Package Namespace**: 深刻理解了 `devtools::document()` 的作用——它不仅生成文档，更是将 `@import` 写入 `NAMESPACE` 的关键步骤。
+
+### 🔮 下一步计划 (Next Steps: Day 7)
+
+**目标**: 文档工程与用户体验 (Documentation & UX)
+
+1.  **README.md 大修**:
+    * 这是项目的“门面”。需要添加 Badges (构建状态)、安装指南。
+    * **关键**: 展示 `pp_plot` 生成的“Before vs After”对比图，用视觉冲击吸引用户。
+2.  **构建 Vignette (长文档)**:
+    * 编写一篇 `Getting Started with prepr`。
+    * 像讲故事一样，演示从“读取脏数据”到“清洗完成”的全流程。
+3.  **高级封装 (Smart Wrapper)** (可选):
+    * 尝试编写一个通用的 `prepr_map()` 或 `prepr_process()` 函数，让用户能一行代码处理整个 Data Frame。
