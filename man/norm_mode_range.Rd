@@ -2,21 +2,27 @@
 % Please edit documentation in R/norm_mode_range.R
 \name{norm_mode_range}
 \alias{norm_mode_range}
-\title{Mode-Range Normalization (Original)}
+\title{M-Score (Mode-Range Normalization)}
 \usage{
-norm_mode_range(x, tau = 0.8)
+norm_mode_range(x, tau = 0.8, digits = 0)
 }
 \arguments{
-\item{x}{A numeric vector. Best suited for integer/discrete data (e.g., daily steps, heart rate bins).}
+\item{x}{A numeric vector.}
 
 \item{tau}{A numeric value (0 to 1). The threshold ratio for defining the mode plateau.
 Bins with \code{freq >= tau * max_freq} are considered part of the routine. Default is 0.8.}
+
+\item{digits}{Integer or NULL.
+If not NULL, values are rounded to this many decimal places \strong{solely for identifying the mode}.
+This makes the algorithm robust against sensor noise (e.g., 1.0001 vs 1.0002).
+Default is 0 (rounds to integer), which is ideal for step counts or heart rates.
+Set to \code{NULL} to disable rounding.}
 }
 \value{
 A numeric vector in the range [-1, 1].
 }
 \description{
-Unlike Z-Score or Min-Max, this algorithm identifies the "Mode Range" (the most frequent value range)
+Unlike Z-Score or Min-Max, the M-Score algorithm identifies the "Mode Range" (the most frequent value range)
 and maps it to 0. This effectively suppresses the noise of daily routine (e.g., stable step counts)
 and amplifies anomalies (e.g., frailty or sudden activity).
 
@@ -29,17 +35,20 @@ It maps:
 }
 \details{
 A robust normalization method designed for longitudinal behavioral data with a "routine plateau".
+Also known as Mode-Range Normalization (MRN).
 }
 \examples{
-# Scenario: An older adult's daily step counts over 10 days
-# Day 1-7: Routine (~3000 steps). Day 8: Fall (200 steps). Day 9-10: Recovery.
-steps <- c(3000, 3100, 3000, 2900, 3050, 3000, 3100, 200, 1500, 3000)
+# Scenario 1: Integer data (Standard)
+steps <- c(3000, 3000, 200, 5000)
+norm_mode_range(steps)
 
-# Apply Mode-Range Normalization
-# Routine days become 0. The fall becomes -1.
-norm_mode_range(steps, tau = 0.8)
+# Scenario 2: Noisy Sensor Data (Floating point)
+# Without 'digits', these would be seen as different values.
+# With digits=1, they are grouped into the same mode.
+sensor_data <- c(9.81, 9.82, 9.80, 2.5, 15.0)
+norm_mode_range(sensor_data, digits = 1)
 }
 \references{
-Gong, R. (2026). A Mode-Centric Normalization Method for Detecting Health Anomalies in Longitudinal Geriatric Data.
+Gong, R. (2026). M-Score: A Robust Normalization Method for Detecting Anomalies in Longitudinal Behavioral Data.
 \emph{arXiv preprint}. (Submitted)
 }
