@@ -7,6 +7,6 @@
 # * https://testthat.r-lib.org/articles/special-files.html
 
 library(testthat)
-library(prepr)
+library(prepkit)
 
-test_check("prepr")
+test_check("prepkit")

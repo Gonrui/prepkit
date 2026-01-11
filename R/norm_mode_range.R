@@ -28,7 +28,7 @@
 #'
 #' @references
 #' Gong, R. (2026). M-Score: A Robust Normalization Method for Detecting Anomalies in Longitudinal Behavioral Data.
-#' \emph{arXiv preprint}. (Submitted)
+#' \emph{arXiv prepkitint}. (Submitted)
 #'
 #' @export
 #'

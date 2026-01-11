@@ -74,13 +74,13 @@ test_that("Internal log-likelihood handles tiny lambda (Near Zero)", {
   # Use ':::' to access the internal unexported function 'boxcox_loglik'.
   # We explicitly pass lambda = 0 to force the execution of the 'if (abs(lam) < 1e-5)' branch.
   # This ensures 100% test coverage for numerical stability logic.
-  ll_zero <- prepr:::boxcox_loglik(0, x)
+  ll_zero <- prepkit:::boxcox_loglik(0, x)
 
   # Verify that it returns a valid numeric result (no error, no NA)
   expect_true(is.numeric(ll_zero))
   expect_false(is.na(ll_zero))
 
   # Also verify the standard branch (lambda = 1) still works
-  ll_one <- prepr:::boxcox_loglik(1, x)
+  ll_one <- prepkit:::boxcox_loglik(1, x)
   expect_true(is.numeric(ll_one))
 })

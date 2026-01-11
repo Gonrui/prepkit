@@ -1,4 +1,4 @@
-# prepr 开发日志 (Development Log)
+# prepkit 开发日志 (Development Log)
 
 ## Day 3: 自动化与云端部署 (2026-01-05)
 
@@ -92,7 +92,7 @@
 * **Rcpp 环境配置**:
     * 修改 `DESCRIPTION` 添加 `Imports: Rcpp` 和 `LinkingTo: Rcpp`。
     * 创建 `src/` 目录和 `.gitignore`。
-    * 创建 `R/prepr-package.R` 用于管理命名空间。
+    * 创建 `R/prepkit-package.R` 用于管理命名空间。
     * **状态**: 已配置但处于“休眠”状态 (Commented out `@useDynLib`)，待未来引入 C++ 代码时激活。
 
 ### 📝 经验总结 (Learnings)
@@ -155,7 +155,7 @@
 # Day 7: 今日开发日志
 ## 📅 开发日志: 2026-01-09 (周五)
 
-**项目:** `prepr` R Package & Scientific Reports Manuscript  
+**项目:** `prepkit` R Package & Scientific Reports Manuscript  
 **地点:** TMIG 办公室 -> 家  
 **状态:** 🟢 **Code Freeze (代码封版) / 备战论文** **心情:** 势如破竹，无懈可击 🚀
 
@@ -164,7 +164,7 @@
 
 ## 🏆 今日核心战果 (Key Achievements)
 
-### 1. R 包工程化收官 (`prepr` v0.1.0)
+### 1. R 包工程化收官 (`prepkit` v0.1.0)
 > **决策**: 今天完成了代码层面的所有修补，正式进入“冻结”状态，不再随意改动逻辑。
 
 * **M-Score 算法增强 (V2.0)**:

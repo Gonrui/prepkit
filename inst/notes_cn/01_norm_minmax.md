@@ -2,7 +2,7 @@
 
 **作者**: Gong Rui  
 **日期**: 2026-01-04  
-**关联函数**: `prepr::norm_minmax`
+**关联函数**: `prepkit::norm_minmax`
 
 ---
 

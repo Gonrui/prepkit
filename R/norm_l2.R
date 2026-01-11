@@ -2,7 +2,7 @@
 #'
 #' Scales the vector so that its Euclidean norm (L2 norm) is 1.
 #' This technique is often used in text mining and high-dimensional clustering,
-#' and is related to spatial sign preprocessing in robust statistics.
+#' and is related to spatial sign prepkitocessing in robust statistics.
 #'
 #' Formula: \eqn{x' = \frac{x}{\sqrt{\sum x^2}}}
 #'
@@ -11,7 +11,7 @@
 #' @return A numeric vector with an L2 norm of 1.
 #'
 #' @references
-#' Serneels, S., De Nages, E., & Van Espen, P. J. (2006). Spatial sign preprocessing: a simple way to impart moderate robustness to multivariate estimators.
+#' Serneels, S., De Nages, E., & Van Espen, P. J. (2006). Spatial sign prepkitocessing: a simple way to impart moderate robustness to multivariate estimators.
 #' \emph{Journal of Chemical Information and Modeling}, 46(3), 1402-1409. \doi{10.1021/ci050498u}
 #'
 #' Han, J., Kamber, M., & Pei, J. (2011). \emph{Data mining: concepts and techniques} (3rd ed.). Morgan Kaufmann.

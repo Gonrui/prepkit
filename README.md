@@ -1,27 +1,27 @@
-# prepr: Robust Preprocessing for Digital Health <img src="man/figures/logo.png" align="right" height="139" />
+# prepkit: Robust prepkitocessing for Digital Health <img src="man/figures/logo.png" align="right" height="139" />
 
 
-[![R-CMD-check](https://github.com/Gonrui/prepr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/Gonrui/prepr/actions)
-[![Codecov test coverage](https://codecov.io/gh/Gonrui/prepr/branch/main/graph/badge.svg)](https://codecov.io/gh/Gonrui/prepr)
+[![R-CMD-check](https://github.com/Gonrui/prepkit/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/Gonrui/prepkit/actions)
+[![Codecov test coverage](https://codecov.io/gh/Gonrui/prepkit/branch/main/graph/badge.svg)](https://codecov.io/gh/Gonrui/prepkit)
 [![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 
 > **"When Z-Score fails, use M-Score."**
 
-**`prepr`** is a comprehensive R package designed for the preprocessing of longitudinal behavioral data, with a specific focus on **gerontology, digital health, and sensor analytics**.
+**`prepkit`** is a comprehensive R package designed for the prepkitocessing of longitudinal behavioral data, with a specific focus on **gerontology, digital health, and sensor analytics**.
 
 Its flagship feature is the **M-Score (Mode-Range Normalization)**, a novel algorithm designed to detect anomalies in data characterized by "habitual plateaus" (e.g., daily step counts, heart rate), where traditional methods like Z-Score or Min-Max scaling often fail due to skewed distributions and high-frequency routine noise.
 
 ## 📦 Installation
 
-`prepr` is rigorously tested on **Linux, macOS, and Windows**, with compatibility verified up to **R 4.5 (development version)**.
+`prepkit` is rigorously tested on **Linux, macOS, and Windows**, with compatibility verified up to **R 4.5 (development version)**.
 
 You can install the stable version from GitHub:
 
 ```r
 # install.packages("devtools")
-devtools::install_github("Gonrui/prepr")
+devtools::install_github("Gonrui/prepkit")
 ```
 
 ## 🚀 Key Algorithms
@@ -41,7 +41,7 @@ Real-world sensor data often contains **routine plateaus** (e.g., an older adult
 **M-Score** handles both elegantly:
 
 ```r
-library(prepr)
+library(prepkit)
 
 # 1. Simulate Sensor Data
 # - Routine: ~3000 steps (with sensor jitter like 3000.1, 2999.9)
@@ -77,9 +77,9 @@ $$
 
 ## 📚 Citation
 
-If you use `prepr` or the M-Score algorithm in your research, please cite:
+If you use `prepkit` or the M-Score algorithm in your research, please cite:
 
-> **Gong, R. (2026).** M-Score: A Robust Normalization Method for Detecting Anomalies in Longitudinal Behavioral Data. *arXiv preprint*.
+> **Gong, R. (2026).** M-Score: A Robust Normalization Method for Detecting Anomalies in Longitudinal Behavioral Data. *arXiv prepkitint*.
 
 ## 📄 License
 
