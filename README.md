@@ -1,4 +1,4 @@
-# prepkit: Robust prepkitocessing for Digital Health <img src="man/figures/logo.png" align="right" height="139" />
+# prepkit: Robust preprocessing for Digital Health <img src="man/figures/logo.png" align="right" height="139" />
 
 
 [![R-CMD-check](https://github.com/Gonrui/prepkit/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/Gonrui/prepkit/actions)
