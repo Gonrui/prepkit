@@ -5,3 +5,5 @@
 ^LICENSE\.md$
 ^DEV_LOG\.md$
 ^data-raw$
+^notes_cn$
+^cran-comments\.md$

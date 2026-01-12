@@ -9,6 +9,7 @@
 #'
 #' @return A \code{ggplot} object.
 #' @import ggplot2
+#' @importFrom stats density
 #' @export
 #'
 #' @examples
@@ -20,6 +21,7 @@
 #'
 #' # 3. Visualize
 #' pp_plot(x, y, title = "Box-Cox Transformation Effect")
+
 pp_plot <- function(x, y, title = "Distribution Comparison") {
 
   # 1. Check inputs

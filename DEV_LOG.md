@@ -220,3 +220,57 @@
     * 基于 MATLAB 生成的基准数据，量化 M-Score 在平台型分布下的信噪比 (SNR) 优势。
 
 > **备注**: 技术地基已经打得非常牢固。周末不需要写代码（除了画图），只专注于“讲故事”。
+
+# 📝 Day 8-10 DevLog: The Birth of `prepkit` & M-Score
+
+**日期**: 2026-01-13 (周二)
+**状态**: CRAN 冲刺前夕
+**核心成就**: 从原型到工程化产品的质变
+
+---
+
+## 1. 战略重塑 (Strategic Pivot)
+
+* **品牌升级**: 
+    * 果断放弃了可能撞名且格局较小的 `prepr`。
+    * 正式更名为 **`prepkit` (Preprocessing Kit)**。
+    * *意义*: 确立了“通用前处理工具箱”的长期定位，兼容未来多模态扩展。
+* **发布策略**: 
+    * 确立了 **"Code First"** 战略。
+    * 优先冲刺 CRAN 上线，确立代码所有权，再从容完成 arXiv/SciRep 论文。
+* **防御体系**: 
+    * 完成了“证伪搜索” (Negative Search)。
+    * *结论*: 明确了 M-Score (Statistical Mode) 与深度学习领域的 Mode Normalization (Distributional Mode) 完全不同。为论文 Discussion 提供了坚实的防御逻辑。
+
+## 2. 工程实现 (Engineering Milestones)
+
+* **架构升级**: 
+    * 将核心函数重构为 R 语言标准的 **S3 泛型 (S3 Generic)** 结构。
+    * `m_score()` 作为调度器，`m_score.default()` 处理单变量。
+    * *意义*: 为未来支持高维矩阵 (`m_score.matrix`) 和 Python 兼容性打下了专业级地基。
+* **数据内置**: 
+    * 创建了 `data-raw/` 标准开发流程。
+    * 生成了黄金标准验证数据集 **`sim_gait_data`** (包含习惯性平台期 + 极低方差噪声 + 临床异常)。
+    * *意义*: 为论文 Figure 1 提供了可复现的“铁证”。
+* **Bug 歼灭**: 
+    * 彻底解决了 `NAMESPACE` 和 `data.R` 中关于数据导出的顽固报错。
+    * 完成了 Git 版本控制的初始化与云端同步。
+
+## 3. 学术写作 (Academic Writing)
+
+* **Methods 完稿**: 
+    * 完成了从“问题定义” (Vanishing Variance) 到“数学公式” (分段函数) 再到“验证策略” (合成数据) 的完整逻辑闭环。
+    * 公式表达专业，强调了 **"Derivative-zero Safety Zone"** (零导数安全区) 这一核心概念。
+* **Introduction 框架**: 
+    * 确立了“漏斗式”结构：从智能手表/多模态背景 $\to$ Z-Score 痛点 $\to$ M-Score 解决方案。
+
+---
+
+## 📅 今日任务 (Day 11: CRAN Submission)
+
+**目标**: 让 `prepkit` 通过 `R CMD check`，并向 CRAN 发出第一版提交。
+
+* [ ] 运行 `devtools::check()`
+* [ ] 修复所有 ERROR/WARNING
+* [ ] 填写 `cran-comments.md`
+* [ ] 提交发布！
