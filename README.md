@@ -2,7 +2,7 @@
 
 
 [![R-CMD-check](https://github.com/Gonrui/prepkit/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/Gonrui/prepkit/actions)
-[![Codecov test coverage](https://codecov.io/gh/Gonrui/prepkit/branch/main/graph/badge.svg)](https://codecov.io/gh/Gonrui/prepkit)
+[![Codecov test coverage](https://app.codecov.io/gh/Gonrui/prepkit/branch/main/graph/badge.svg)](https://app.codecov.io/gh/Gonrui/prepkit)
 [![Documentation](https://img.shields.io/badge/docs-pkgdown-blue.svg)](https://gonrui.github.io/prepkit/)
 [![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
