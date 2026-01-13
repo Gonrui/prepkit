@@ -82,7 +82,7 @@ $$
 
 If you use `prepkit` or the M-Score algorithm in your research, please cite:
 
-> **Gong, R. (2026).** M-Score: A Robust Normalization Method for Detecting Anomalies in Longitudinal Behavioral Data. *arXiv prepkitint*.
+> **Gong, R. (2026).** M-Score: A Robust Normalization Method for Detecting Anomalies in Longitudinal Behavioral Data. *arXiv preprint*.
 
 ## 📄 License
 
