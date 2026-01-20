@@ -1,0 +1,64 @@
+# prepkit
+
+R包，用于数据预处理、归一化和变换，针对老年学、数字健康和传感器分析领域。
+
+## 核心算法
+
+**M-Score (众数范围归一化)** -
+[`norm_mode_range()`](https://gonrui.github.io/prepkit/reference/norm_mode_range.md) -
+创新算法，用于检测老年人行为异常（步数变化、跌倒风险等） -
+解决传统方法在”习惯性平台”数据上的失效问题 - 输出范围 \[-1, 1\]
+
+## 主要函数
+
+### 归一化 (norm\_\*)
+
+- [`norm_mode_range()`](https://gonrui.github.io/prepkit/reference/norm_mode_range.md) -
+  M-Score（核心）
+- [`norm_zscore()`](https://gonrui.github.io/prepkit/reference/norm_zscore.md) -
+  Z-Score 标准化
+- [`norm_minmax()`](https://gonrui.github.io/prepkit/reference/norm_minmax.md) -
+  最小-最大缩放
+- [`norm_robust()`](https://gonrui.github.io/prepkit/reference/norm_robust.md) -
+  鲁棒标准化（中位数-MAD）
+- [`norm_decimal()`](https://gonrui.github.io/prepkit/reference/norm_decimal.md) -
+  小数缩放
+- [`norm_mean()`](https://gonrui.github.io/prepkit/reference/norm_mean.md) -
+  均值归一化
+- [`norm_l2()`](https://gonrui.github.io/prepkit/reference/norm_l2.md) -
+  L2范数
+
+### 变换 (trans\_\*)
+
+- [`trans_boxcox()`](https://gonrui.github.io/prepkit/reference/trans_boxcox.md) -
+  Box-Cox 幂变换
+- [`trans_yeojohnson()`](https://gonrui.github.io/prepkit/reference/trans_yeojohnson.md) -
+  Yeo-Johnson 变换（支持负值）
+- [`trans_log()`](https://gonrui.github.io/prepkit/reference/trans_log.md) -
+  对数变换
+
+### 可视化
+
+- [`pp_plot()`](https://gonrui.github.io/prepkit/reference/pp_plot.md) -
+  变换前后密度对比图
+
+## 数据集
+
+- `sim_gait_data` - 200天模拟老年人步数数据
+
+## 开发命令
+
+``` r
+devtools::document()
+devtools::check()
+devtools::test()
+devtools::install()
+covr::package_coverage()
+```
+
+## 项目信息
+
+- 作者: Rui Gong (东京都老年研究所)
+- 许可证: MIT
+- 测试覆盖率: 100%
+- 目标: 提交 CRAN

@@ -10,11 +10,11 @@
 Source:
 [`DESCRIPTION`](https://github.com/Gonrui/prepkit/blob/HEAD/DESCRIPTION)
 
-Gong R (2026). *prepkit: What the Package Does (Title Case)*. R package
-version 0.1.0, <https://github.com/Gonrui/prepkit>.
+Gong R (2026). *prepkit: Data Normalization and Transformation*. R
+package version 0.1.0, <https://github.com/Gonrui/prepkit>.
 
     @Manual{,
-      title = {prepkit: What the Package Does (Title Case)},
+      title = {prepkit: Data Normalization and Transformation},
       author = {Rui Gong},
       year = {2026},
       note = {R package version 0.1.0},

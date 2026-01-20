@@ -1,10 +1,12 @@
 <urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
 <url><loc>https://gonrui.github.io/prepkit/404.html</loc></url>
 <url><loc>https://gonrui.github.io/prepkit/authors.html</loc></url>
+<url><loc>https://gonrui.github.io/prepkit/CLAUDE.html</loc></url>
 <url><loc>https://gonrui.github.io/prepkit/DEV_LOG.html</loc></url>
 <url><loc>https://gonrui.github.io/prepkit/index.html</loc></url>
 <url><loc>https://gonrui.github.io/prepkit/LICENSE-text.html</loc></url>
 <url><loc>https://gonrui.github.io/prepkit/LICENSE.html</loc></url>
+<url><loc>https://gonrui.github.io/prepkit/news/index.html</loc></url>
 <url><loc>https://gonrui.github.io/prepkit/reference/index.html</loc></url>
 <url><loc>https://gonrui.github.io/prepkit/reference/norm_decimal.html</loc></url>
 <url><loc>https://gonrui.github.io/prepkit/reference/norm_l2.html</loc></url>

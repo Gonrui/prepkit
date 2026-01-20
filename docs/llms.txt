@@ -1,12 +1,16 @@
-# prepkit: Robust prepkitocessing for Digital Health
+# prepkit: Robust preprocessing for Digital Health
 
 [![R-CMD-check](https://github.com/Gonrui/prepkit/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/Gonrui/prepkit/actions)
 [![Codecov test
-coverage](https://codecov.io/gh/Gonrui/prepkit/branch/main/graph/badge.svg)](https://codecov.io/gh/Gonrui/prepkit)
+coverage](https://app.codecov.io/gh/Gonrui/prepkit/branch/main/graph/badge.svg)](https://app.codecov.io/gh/Gonrui/prepkit)
+[![Documentation](https://img.shields.io/badge/docs-pkgdown-blue.svg)](https://gonrui.github.io/prepkit/)
 [![Lifecycle:
 stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 [![License:
 MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+> **Full Documentation & Tutorials:**
+> <https://gonrui.github.io/prepkit/>
 
 > **“When Z-Score fails, use M-Score.”**
 
@@ -95,8 +99,7 @@ If you use `prepkit` or the M-Score algorithm in your research, please
 cite:
 
 > **Gong, R. (2026).** M-Score: A Robust Normalization Method for
-> Detecting Anomalies in Longitudinal Behavioral Data. *arXiv
-> prepkitint*.
+> Detecting Anomalies in Longitudinal Behavioral Data. *arXiv preprint*.
 
 ## 📄 License
 
