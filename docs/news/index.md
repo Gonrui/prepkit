@@ -1,5 +1,9 @@
 # Changelog
 
+## prepkit 0.1.1
+
+- Version bump for CRAN submission.
+
 ## prepkit 0.1.0
 
 - Initial release on CRAN.

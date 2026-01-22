@@ -1,5 +1,20 @@
 # prepkit 开发日志 (Development Log)
 
+## Day 13: 版本对齐与文档更新 (2026-01-23)
+
+**状态**: ✅ 完成
+
+### 🚀 核心进展 (Key Progress)
+1. **版本统一 (v0.1.1)**
+   - 统一 NEWS 与 CRAN-SUBMISSION 的版本号为 0.1.1。
+   - 保留 0.1.0 作为历史版本条目。
+2. **CI 策略优化**
+   - GitHub Actions 默认仅跑 Linux（R release），节省日常成本。
+   - 重大更新时通过 `workflow_dispatch` 触发全矩阵（Linux/Mac/Windows）。
+3. **文档站点更新**
+   - 重新构建 pkgdown，`docs/` 内容同步 0.1.1 状态。
+   - 新增 `CODEX.md` 作为项目进度追踪文档。
+
 ## Day 3: 自动化与云端部署 (2026-01-05)
 
 **耗时**: 1.5 小时 **状态**: ✅ 完成

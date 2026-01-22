@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="index.html">prepkit</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -479,7 +479,180 @@
 <ul class="task-list"><li><label><input type="checkbox"><strong>Python 原型</strong>: 在 PyCharm 中尝试写出 M-Score 的 Python 版本核心函数。</label></li>
 <li><label><input type="checkbox"><strong>C++ 练手</strong>: 在 CLion 中写一个简单的向量计算 Demo，熟悉断点调试。</label></li>
 <li><label><input type="checkbox"><strong>论文写作</strong>: 继续推进 M-Score 的方法论部分。</label></li>
+</ul><hr></div>
+</div>
+<div class="section level1">
+<h1 id="day-12-cran-提交前的最后冲刺">Day 12: CRAN 提交前的最后冲刺<a class="anchor" aria-label="anchor" href="#day-12-cran-%E6%8F%90%E4%BA%A4%E5%89%8D%E7%9A%84%E6%9C%80%E5%90%8E%E5%86%B2%E5%88%BA"></a></h1>
+<div class="section level2">
+<h2 id="date-开发日志cran-提交准备完成">📅 开发日志：CRAN 提交准备完成<a class="anchor" aria-label="anchor" href="#date-%E5%BC%80%E5%8F%91%E6%97%A5%E5%BF%97cran-%E6%8F%90%E4%BA%A4%E5%87%86%E5%A4%87%E5%AE%8C%E6%88%90"></a></h2>
+<p><strong>日期</strong>: 2026-01-20 (周一) <strong>地点</strong>: 家 <strong>状态</strong>: ✅ <strong>Ready for CRAN Submission</strong> <strong>标签</strong>: #CRAN #QualityAssurance #Documentation</p>
+<hr></div>
+<div class="section level2">
+<h2 id="dart-核心成就-key-achievements">🎯 核心成就 (Key Achievements)<a class="anchor" aria-label="anchor" href="#dart-%E6%A0%B8%E5%BF%83%E6%88%90%E5%B0%B1-key-achievements"></a></h2>
+<div class="section level3">
+<h3 id="id_1-description-文件-cran-合规化">1. DESCRIPTION 文件 CRAN 合规化<a class="anchor" aria-label="anchor" href="#id_1-description-%E6%96%87%E4%BB%B6-cran-%E5%90%88%E8%A7%84%E5%8C%96"></a></h3>
+<p><strong>背景</strong>: 收到 CRAN 审查员的反馈，指出 DESCRIPTION 不符合规范。</p>
+<p><strong>修复内容</strong>: * <strong>标题优化</strong>: * 移除冗余的 “Tools for” 前缀 * 从 <code>Tools for Data Normalization and Transformation</code> → <code>Data Normalization and Transformation</code> * <strong>描述重构</strong>: * 移除 “Provides functions for” 等冗余表述 * 第一句简洁直接：<code>Implements data normalization and transformation methods</code> * 添加了学术引用（DOI 格式）： * Box and Cox (1964) <a href="doi:10.1111/j.2517-6161.1964.tb00553.x" class="uri">doi:10.1111/j.2517-6161.1964.tb00553.x</a> * Yeo and Johnson (2000) <a href="doi:10.1093/biomet/87.4.954" class="uri">doi:10.1093/biomet/87.4.954</a> * 消除了换行产生的多余空格 * <strong>URL 字段增强</strong>: * 添加了 pkgdown 网站地址：<code>https://gonrui.github.io/prepkit</code> * 保留 GitHub 仓库地址</p>
+<p><strong>验证</strong>: * ✅ 所有字段符合 CRAN Policy * ✅ 引用格式正确（无空格，尖括号包裹）</p>
+<hr></div>
+<div class="section level3">
+<h3 id="id_2-质量保证体系全面检查">2. 质量保证体系全面检查<a class="anchor" aria-label="anchor" href="#id_2-%E8%B4%A8%E9%87%8F%E4%BF%9D%E8%AF%81%E4%BD%93%E7%B3%BB%E5%85%A8%E9%9D%A2%E6%A3%80%E6%9F%A5"></a></h3>
+<div class="section level4">
+<h4 id="a-拼写检查-spell-check">A. 拼写检查 (Spell Check)<a class="anchor" aria-label="anchor" href="#a-%E6%8B%BC%E5%86%99%E6%A3%80%E6%9F%A5-spell-check"></a></h4>
+<ul><li>使用 <code><a href="https://docs.ropensci.org/spelling//reference/spell_check_package.html" class="external-link">spelling::spell_check_package()</a></code> 扫描</li>
+<li>发现技术术语：<code>biomet</code> (期刊缩写), <code>doi</code> (标准缩写)</li>
+<li>更新词典 <code>inst/WORDLIST</code>，添加合法术语</li>
+<li>
+<strong>结果</strong>: ✅ 无拼写错误</li>
 </ul></div>
+<div class="section level4">
+<h4 id="b-示例运行时间验证">B. 示例运行时间验证<a class="anchor" aria-label="anchor" href="#b-%E7%A4%BA%E4%BE%8B%E8%BF%90%E8%A1%8C%E6%97%B6%E9%97%B4%E9%AA%8C%E8%AF%81"></a></h4>
+<ul><li>使用 <code><a href="https://devtools.r-lib.org/reference/run_examples.html" class="external-link">devtools::run_examples()</a></code> 测试所有函数示例</li>
+<li>
+<strong>结果</strong>: ✅ 所有示例正常运行，无超时</li>
+</ul></div>
+<div class="section level4">
+<h4 id="c-license-文件检查">C. LICENSE 文件检查<a class="anchor" aria-label="anchor" href="#c-license-%E6%96%87%E4%BB%B6%E6%A3%80%E6%9F%A5"></a></h4>
+<ul><li>验证 <code>LICENSE</code> 和 <code>LICENSE.md</code> 格式正确</li>
+<li>MIT 协议配置完整</li>
+<li>
+<strong>结果</strong>: ✅ 符合开源许可标准</li>
+</ul></div>
+<div class="section level4">
+<h4 id="d-测试覆盖率-code-coverage">D. 测试覆盖率 (Code Coverage)<a class="anchor" aria-label="anchor" href="#d-%E6%B5%8B%E8%AF%95%E8%A6%86%E7%9B%96%E7%8E%87-code-coverage"></a></h4>
+<ul><li>使用 <code><a href="http://covr.r-lib.org/reference/package_coverage.html" class="external-link">covr::package_coverage()</a></code> 全代码扫描</li>
+<li>
+<strong>结果</strong>: ✅ <strong>100% 覆盖率</strong>（所有 11 个源文件）</li>
+</ul></div>
+<div class="section level4">
+<h4 id="e-r-cmd-check-cran-标准">E. R CMD check (CRAN 标准)<a class="anchor" aria-label="anchor" href="#e-r-cmd-check-cran-%E6%A0%87%E5%87%86"></a></h4>
+<ul><li>使用 <code>devtools::check(args = '--as-cran')</code> 严格检查</li>
+<li>
+<strong>首次检查</strong>: 发现 1 NOTE（非标准文件 <code>Rplots.pdf</code>）</li>
+<li>
+<strong>修复</strong>: 删除示例生成的临时图片文件</li>
+<li>
+<strong>最终结果</strong>: ✅ <strong>0 errors | 0 warnings | 0 notes</strong>
+</li>
+</ul><hr></div>
+</div>
+<div class="section level3">
+<h3 id="id_3-构建系统优化">3. 构建系统优化<a class="anchor" aria-label="anchor" href="#id_3-%E6%9E%84%E5%BB%BA%E7%B3%BB%E7%BB%9F%E4%BC%98%E5%8C%96"></a></h3>
+<div class="section level4">
+<h4 id="问题发现">问题发现<a class="anchor" aria-label="anchor" href="#%E9%97%AE%E9%A2%98%E5%8F%91%E7%8E%B0"></a></h4>
+<p>通过 <code>tar -tzf prepkit_0.1.0.tar.gz</code> 检查包内容，发现不应包含的文件： * <code>build/</code> 目录（构建临时文件） * <code>inst/notes_cn/</code> 目录（中文开发笔记） * <code>.Rhistory</code> 文件（R 命令历史）</p>
+</div>
+<div class="section level4">
+<h4 id="解决方案">解决方案<a class="anchor" aria-label="anchor" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"></a></h4>
+<p>更新 <code>.Rbuildignore</code>，添加：</p>
+<pre><code>^\.Rhistory$
+^inst/notes_cn$
+^build$</code></pre>
+</div>
+<div class="section level4">
+<h4 id="验证">验证<a class="anchor" aria-label="anchor" href="#%E9%AA%8C%E8%AF%81"></a></h4>
+<ul><li>重新构建包：<code><a href="https://devtools.r-lib.org/reference/build.html" class="external-link">devtools::build()</a></code>
+</li>
+<li>检查包内容：确认不必要文件已被排除</li>
+<li>
+<strong>结果</strong>: ✅ 包结构干净，仅包含必要文件</li>
+</ul><hr></div>
+</div>
+<div class="section level3">
+<h3 id="id_4-文档网站维护">4. 文档网站维护<a class="anchor" aria-label="anchor" href="#id_4-%E6%96%87%E6%A1%A3%E7%BD%91%E7%AB%99%E7%BB%B4%E6%8A%A4"></a></h3>
+<ul><li>重新构建 pkgdown 网站：<code><a href="https://pkgdown.r-lib.org/reference/build_site.html" class="external-link">pkgdown::build_site()</a></code>
+</li>
+<li>更新内容：
+<ul><li>DESCRIPTION 变更自动同步到网站</li>
+<li>添加 CLAUDE.md 和 NEWS.md 到网站</li>
+<li>更新所有函数参考页面</li>
+</ul></li>
+<li>
+<strong>部署</strong>: 更新到 GitHub Pages (<a href="https://gonrui.github.io/prepkit" class="uri">https://gonrui.github.io/prepkit</a>)</li>
+</ul><hr></div>
+</div>
+<div class="section level2">
+<h2 id="package-最终产物-deliverables">📦 最终产物 (Deliverables)<a class="anchor" aria-label="anchor" href="#package-%E6%9C%80%E7%BB%88%E4%BA%A7%E7%89%A9-deliverables"></a></h2>
+<div class="section level3">
+<h3 id="cran-提交包">CRAN 提交包<a class="anchor" aria-label="anchor" href="#cran-%E6%8F%90%E4%BA%A4%E5%8C%85"></a></h3>
+<p><strong>文件</strong>: <code>prepkit_0.1.0.tar.gz</code> <strong>位置</strong>: <code>C:\Users\mini gong\Documents\R_project\prepkit_0.1.0.tar.gz</code></p>
+<p><strong>包内容</strong>: * DESCRIPTION, LICENSE, NAMESPACE, NEWS.md, README.md * R/ - 12 个源代码文件 * man/ - 12 个文档文件 + logo * data/ - sim_gait_data.rda * tests/ - 11 个测试文件 * inst/WORDLIST - 拼写词典</p>
+<p><strong>质量指标</strong>: * R CMD check: <strong>0 errors, 0 warnings, 0 notes</strong> * 测试覆盖率: <strong>100%</strong> * 文档完整性: <strong>100%</strong> * 示例可运行性: <strong>100%</strong></p>
+<hr></div>
+</div>
+<div class="section level2">
+<h2 id="bulb-技术总结-technical-insights">💡 技术总结 (Technical Insights)<a class="anchor" aria-label="anchor" href="#bulb-%E6%8A%80%E6%9C%AF%E6%80%BB%E7%BB%93-technical-insights"></a></h2>
+<div class="section level3">
+<h3 id="学到的经验">学到的经验<a class="anchor" aria-label="anchor" href="#%E5%AD%A6%E5%88%B0%E7%9A%84%E7%BB%8F%E9%AA%8C"></a></h3>
+<ol style="list-style-type: decimal"><li>
+<strong>CRAN 审查的严格性</strong>:
+<ul><li>标题/描述的每个词都会被审查</li>
+<li>必须提供学术引用（DOI/ISBN/URL）</li>
+<li>不允许有多余空格（换行会产生空格）</li>
+</ul></li>
+<li>
+<strong>包构建的陷阱</strong>:
+<ul><li>
+<code>.Rbuildignore</code> 是正则表达式，<code>^notes_cn$</code> 只匹配顶层目录</li>
+<li>需要单独添加 <code>^inst/notes_cn$</code> 才能排除子目录</li>
+<li>
+<code>build/</code> 目录需要显式忽略</li>
+</ul></li>
+<li>
+<strong>质量保证的最佳实践</strong>:
+<ul><li>本地检查顺序：拼写 → 示例 → 覆盖率 → R CMD check</li>
+<li>检查包内容：<code>tar -tzf</code> 是最直接的验证方法</li>
+<li>删除临时文件后需要重新运行 R CMD check</li>
+</ul></li>
+<li>
+<strong>Git 提交的注意事项</strong>:
+<ul><li>用户可能不希望将 AI 列为共同作者</li>
+<li>需要尊重用户偏好，提供灵活选项</li>
+</ul></li>
+</ol><hr></div>
+</div>
+<div class="section level2">
+<h2 id="rocket-下一步-next-steps">🚀 下一步 (Next Steps)<a class="anchor" aria-label="anchor" href="#rocket-%E4%B8%8B%E4%B8%80%E6%AD%A5-next-steps"></a></h2>
+<div class="section level3">
+<h3 id="立即可执行">立即可执行<a class="anchor" aria-label="anchor" href="#%E7%AB%8B%E5%8D%B3%E5%8F%AF%E6%89%A7%E8%A1%8C"></a></h3>
+<ul class="task-list"><li><label><input type="checkbox" checked>修正 DESCRIPTION</label></li>
+<li><label><input type="checkbox" checked>完成本地全面检查</label></li>
+<li><label><input type="checkbox" checked>更新 .Rbuildignore</label></li>
+<li><label><input type="checkbox" checked>生成最终提交包</label></li>
+<li><label><input type="checkbox"><strong>提交到 CRAN</strong>: 访问 <a href="https://cran.r-project.org/submit.html" class="external-link uri">https://cran.r-project.org/submit.html</a></label></li>
+</ul></div>
+<div class="section level3">
+<h3 id="等待-cran-审查期间">等待 CRAN 审查期间<a class="anchor" aria-label="anchor" href="#%E7%AD%89%E5%BE%85-cran-%E5%AE%A1%E6%9F%A5%E6%9C%9F%E9%97%B4"></a></h3>
+<ul class="task-list"><li><label><input type="checkbox">继续推进 M-Score 论文写作</label></li>
+<li><label><input type="checkbox">准备 Python 版本的原型代码</label></li>
+<li><label><input type="checkbox">设计补充实验（真实数据验证）</label></li>
+</ul><hr></div>
+</div>
+<div class="section level2">
+<h2 id="bar_chart-项目状态总览">📊 项目状态总览<a class="anchor" aria-label="anchor" href="#bar_chart-%E9%A1%B9%E7%9B%AE%E7%8A%B6%E6%80%81%E6%80%BB%E8%A7%88"></a></h2>
+<table class="table"><thead><tr><th>维度</th>
+<th>状态</th>
+<th>备注</th>
+</tr></thead><tbody><tr><td>代码质量</td>
+<td>✅ 100%</td>
+<td>测试覆盖率满分</td>
+</tr><tr><td>CRAN 合规</td>
+<td>✅ 完美</td>
+<td>0/0/0 检查结果</td>
+</tr><tr><td>文档完整性</td>
+<td>✅ 完整</td>
+<td>所有函数有文档和示例</td>
+</tr><tr><td>学术引用</td>
+<td>✅ 规范</td>
+<td>DOI 格式正确</td>
+</tr><tr><td>开源协议</td>
+<td>✅ MIT</td>
+<td>LICENSE 文件完整</td>
+</tr><tr><td>网站部署</td>
+<td>✅ 在线</td>
+<td>pkgdown 自动更新</td>
+</tr></tbody></table><p><strong>总结</strong>: prepkit v0.1.0 已经达到工程化产品的最高标准，随时可以提交 CRAN。</p>
+</div>
 </div>
 
 
