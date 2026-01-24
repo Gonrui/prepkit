@@ -20,6 +20,24 @@ knitr::opts_chunk$set(
 ```
 
 ## Introduction
+Quality control (QC) is a foundational yet often implicit component of data preprocessing.
+In many analytical workflows, QC is embedded informally within preprocessing steps or applied
+in an ad-hoc manner without a clearly defined structure.
+
+As data volume, dimensionality, and heterogeneity increase, this implicit treatment of QC
+becomes increasingly fragile. Decisions about data inclusion, exclusion, or modification are
+often made implicitly, without explicit documentation of the criteria or assumptions involved.
+
+In *prepkit*, quality control is treated as an explicit and structured process that precedes
+analysis-level preprocessing. QC is not intended to improve data quality or to optimize data
+for downstream models. Instead, its purpose is to assess whether data are sufficiently reliable
+to justify further processing and analysis.
+
+This vignette documents the design principles underlying QC in *prepkit*. It focuses on
+conceptual boundaries, processing order, and responsibility separation, rather than on
+implementation details or step-by-step usage instructions. The goal is to make QC assumptions
+explicit, auditable, and reproducible across datasets and projects.
+
 
 ## Scope and Non-Goals
 
