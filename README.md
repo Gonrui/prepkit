@@ -1,6 +1,8 @@
 # prepkit: Robust preprocessing for Digital Health <img src="man/figures/logo.png" align="right" height="139" />
 
 
+[![CRAN status](https://www.r-pkg.org/badges/version/prepkit)](https://CRAN.R-project.org/package=prepkit)
+[![CRAN downloads](https://cranlogs.r-pkg.org/badges/grand-total/prepkit)](https://CRAN.R-project.org/package=prepkit)
 [![R-CMD-check](https://github.com/Gonrui/prepkit/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/Gonrui/prepkit/actions)
 [![Codecov test coverage](https://app.codecov.io/gh/Gonrui/prepkit/branch/main/graph/badge.svg)](https://app.codecov.io/gh/Gonrui/prepkit)
 [![Documentation](https://img.shields.io/badge/docs-pkgdown-blue.svg)](https://gonrui.github.io/prepkit/)
@@ -12,7 +14,7 @@
 
 > **"When Z-Score fails, use M-Score."**
 
-**`prepkit`** is a comprehensive R package designed for the prepkitocessing of longitudinal behavioral data, with a specific focus on **gerontology, digital health, and sensor analytics**.
+**`prepkit`** is a comprehensive R package designed for the preprocessing of longitudinal behavioral data, with a specific focus on **gerontology, digital health, and sensor analytics**.
 
 Its flagship feature is the **M-Score (Mode-Range Normalization)**, a novel algorithm designed to detect anomalies in data characterized by "habitual plateaus" (e.g., daily step counts, heart rate), where traditional methods like Z-Score or Min-Max scaling often fail due to skewed distributions and high-frequency routine noise.
 
@@ -20,7 +22,13 @@ Its flagship feature is the **M-Score (Mode-Range Normalization)**, a novel algo
 
 `prepkit` is rigorously tested on **Linux, macOS, and Windows**, with compatibility verified up to **R 4.5 (development version)**.
 
-You can install the stable version from GitHub:
+Install the stable version from CRAN:
+
+```r
+install.packages("prepkit")
+```
+
+You can install the development version from GitHub:
 
 ```r
 # install.packages("devtools")

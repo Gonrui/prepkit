@@ -13,8 +13,8 @@
 <link rel="manifest" href="site.webmanifest">
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
-<link href="deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
+<script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Data Normalization and Transformation">
 <meta name="description" content="Provides functions for data normalization and transformation in preprocessing stages. Implements scaling methods (min-max, Z-score, L2 normalization) and power transformations (Box-Cox, Yeo-Johnson). Box-Cox transformation is described in Box and Cox (1964) &lt;doi:10.1111/j.2517-6161.1964.tb00553.x&gt;, Yeo-Johnson transformation in Yeo and Johnson (2000) &lt;doi:10.1093/biomet/87.4.954&gt;.">
 <meta property="og:description" content="Provides functions for data normalization and transformation in preprocessing stages. Implements scaling methods (min-max, Z-score, L2 normalization) and power transformations (Box-Cox, Yeo-Johnson). Box-Cox transformation is described in Box and Cox (1964) &lt;doi:10.1111/j.2517-6161.1964.tb00553.x&gt;, Yeo-Johnson transformation in Yeo and Johnson (2000) &lt;doi:10.1093/biomet/87.4.954&gt;.">
@@ -57,26 +57,29 @@
 <img src="logo.png" class="logo" alt=""><h1 id="prepkit-robust-preprocessing-for-digital-health-">prepkit: Robust preprocessing for Digital Health <a class="anchor" aria-label="anchor" href="#prepkit-robust-preprocessing-for-digital-health-"></a>
 </h1>
 </div>
-<p><a href="https://github.com/Gonrui/prepkit/actions" class="external-link"><img src="https://github.com/Gonrui/prepkit/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a> <a href="https://app.codecov.io/gh/Gonrui/prepkit" class="external-link"><img src="https://app.codecov.io/gh/Gonrui/prepkit/branch/main/graph/badge.svg" alt="Codecov test coverage"></a> <a href="https://gonrui.github.io/prepkit/"><img src="https://img.shields.io/badge/docs-pkgdown-blue.svg" alt="Documentation"></a> <a href="https://lifecycle.r-lib.org/articles/stages.html#stable" class="external-link"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg" alt="Lifecycle: stable"></a> <a href="https://opensource.org/licenses/MIT" class="external-link"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a></p>
+<p><a href="https://CRAN.R-project.org/package=prepkit" class="external-link"><img src="https://www.r-pkg.org/badges/version/prepkit" alt="CRAN status"></a> <a href="https://CRAN.R-project.org/package=prepkit" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/grand-total/prepkit" alt="CRAN downloads"></a> <a href="https://github.com/Gonrui/prepkit/actions" class="external-link"><img src="https://github.com/Gonrui/prepkit/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a> <a href="https://app.codecov.io/gh/Gonrui/prepkit" class="external-link"><img src="https://app.codecov.io/gh/Gonrui/prepkit/branch/main/graph/badge.svg" alt="Codecov test coverage"></a> <a href="https://gonrui.github.io/prepkit/"><img src="https://img.shields.io/badge/docs-pkgdown-blue.svg" alt="Documentation"></a> <a href="https://lifecycle.r-lib.org/articles/stages.html#stable" class="external-link"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg" alt="Lifecycle: stable"></a> <a href="https://opensource.org/licenses/MIT" class="external-link"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a></p>
 <blockquote>
 <p><strong>Full Documentation &amp; Tutorials:</strong> <a href="https://gonrui.github.io/prepkit/">https://gonrui.github.io/prepkit/</a></p>
 </blockquote>
 <blockquote>
 <p><strong>“When Z-Score fails, use M-Score.”</strong></p>
 </blockquote>
-<p><strong><code>prepkit</code></strong> is a comprehensive R package designed for the prepkitocessing of longitudinal behavioral data, with a specific focus on <strong>gerontology, digital health, and sensor analytics</strong>.</p>
+<p><strong><code>prepkit</code></strong> is a comprehensive R package designed for the preprocessing of longitudinal behavioral data, with a specific focus on <strong>gerontology, digital health, and sensor analytics</strong>.</p>
 <p>Its flagship feature is the <strong>M-Score (Mode-Range Normalization)</strong>, a novel algorithm designed to detect anomalies in data characterized by “habitual plateaus” (e.g., daily step counts, heart rate), where traditional methods like Z-Score or Min-Max scaling often fail due to skewed distributions and high-frequency routine noise.</p>
 <div class="section level2">
-<h2 id="package-installation">📦 Installation<a class="anchor" aria-label="anchor" href="#package-installation"></a>
+<h2 id="id_-installation">📦 Installation<a class="anchor" aria-label="anchor" href="#id_-installation"></a>
 </h2>
 <p><code>prepkit</code> is rigorously tested on <strong>Linux, macOS, and Windows</strong>, with compatibility verified up to <strong>R 4.5 (development version)</strong>.</p>
-<p>You can install the stable version from GitHub:</p>
+<p>Install the stable version from CRAN:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"prepkit"</span><span class="op">)</span></span></code></pre></div>
+<p>You can install the development version from GitHub:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># install.packages("devtools")</span></span>
 <span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"Gonrui/prepkit"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="rocket-key-algorithms">🚀 Key Algorithms<a class="anchor" aria-label="anchor" href="#rocket-key-algorithms"></a>
+<h2 id="id_-key-algorithms">🚀 Key Algorithms<a class="anchor" aria-label="anchor" href="#id_-key-algorithms"></a>
 </h2>
 <table class="table">
 <colgroup>
@@ -84,33 +87,33 @@
 <col width="33%">
 <col width="33%">
 </colgroup>
-<thead><tr>
+<thead><tr class="header">
 <th align="left">Function</th>
 <th align="left">Algorithm / Description</th>
 <th align="left">Use Case</th>
 </tr></thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td align="left"><strong><code>norm_mode_range</code></strong></td>
 <td align="left"><strong>M-Score (New!)</strong></td>
 <td align="left">Detects frailty/falls in elderly behavioral data by suppressing routine noise.</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left"><strong><code>trans_boxcox</code></strong></td>
 <td align="left"><strong>Robust Box-Cox</strong></td>
 <td align="left">MLE-optimized power transform. Auto-handles non-positive values.</td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="left"><strong><code>trans_yeojohnson</code></strong></td>
 <td align="left"><strong>Yeo-Johnson</strong></td>
 <td align="left">Power transform natively supporting negative values.</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left"><strong><code>norm_l2</code></strong></td>
 <td align="left"><strong>Spatial Sign</strong></td>
 <td align="left">Projects data onto a unit hypersphere (L2 Norm). Ideal for high-dim clustering.</td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="left"><strong><code>pp_plot</code></strong></td>
 <td align="left"><strong>Density Visualizer</strong></td>
 <td align="left">Instant “Before vs. After” visualization for normality checks.</td>
@@ -119,11 +122,11 @@
 </table>
 </div>
 <div class="section level2">
-<h2 id="bar_chart-quick-start-the-power-of-m-score">📊 Quick Start: The Power of M-Score<a class="anchor" aria-label="anchor" href="#bar_chart-quick-start-the-power-of-m-score"></a>
+<h2 id="id_-quick-start-the-power-of-m-score">📊 Quick Start: The Power of M-Score<a class="anchor" aria-label="anchor" href="#id_-quick-start-the-power-of-m-score"></a>
 </h2>
 <p>Real-world sensor data often contains <strong>routine plateaus</strong> (e.g., an older adult consistently walking 3000 steps) and <strong>sensor noise</strong> (floating-point jitter).</p>
 <p><strong>M-Score</strong> handles both elegantly:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://gonrui.github.io/prepkit/">prepkit</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># 1. Simulate Sensor Data</span></span>
@@ -141,11 +144,11 @@
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>Raw <span class="op">=</span> <span class="va">steps</span>, M_Score <span class="op">=</span> <span class="va">m_scores</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="triangular_ruler-mathematical-foundation">📐 Mathematical Foundation<a class="anchor" aria-label="anchor" href="#triangular_ruler-mathematical-foundation"></a>
+<h2 id="id_-mathematical-foundation">📐 Mathematical Foundation<a class="anchor" aria-label="anchor" href="#id_-mathematical-foundation"></a>
 </h2>
 <p>The M-Score transforms data based on its <strong>Mode Interval</strong> (the routine plateau). Unlike Z-Score which penalizes stability (low variance), M-Score treats the most frequent range as the “Safe Zone” (Score = 0).</p>
 <p>The transformation function <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">M(x)</annotation></semantics></math> is defined as:</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mi>−</mi><mfrac><mrow><msub><mi>k</mi><mi>L</mi></msub><mo>−</mo><mi>x</mi></mrow><mrow><msub><mi>k</mi><mi>L</mi></msub><mo>−</mo><msub><mi>k</mi><mrow><mi>m</mi><mi>i</mi><mi>n</mi></mrow></msub></mrow></mfrac></mtd><mtd columnalign="left" style="text-align: left"><mrow><mtext mathvariant="normal">if </mtext><mspace width="0.333em"></mspace></mrow><mi>x</mi><mo>&lt;</mo><msub><mi>k</mi><mi>L</mi></msub><mspace width="1.0em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mtext mathvariant="normal">Left Tail / Frailty</mtext><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mn>0</mn></mtd><mtd columnalign="left" style="text-align: left"><mrow><mtext mathvariant="normal">if </mtext><mspace width="0.333em"></mspace></mrow><msub><mi>k</mi><mi>L</mi></msub><mo>≤</mo><mi>x</mi><mo>≤</mo><msub><mi>k</mi><mi>R</mi></msub><mspace width="1.0em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mtext mathvariant="normal">Routine Plateau</mtext><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mfrac><mrow><mi>x</mi><mo>−</mo><msub><mi>k</mi><mi>R</mi></msub></mrow><mrow><msub><mi>k</mi><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub><mo>−</mo><msub><mi>k</mi><mi>R</mi></msub></mrow></mfrac></mtd><mtd columnalign="left" style="text-align: left"><mrow><mtext mathvariant="normal">if </mtext><mspace width="0.333em"></mspace></mrow><mi>x</mi><mo>&gt;</mo><msub><mi>k</mi><mi>R</mi></msub><mspace width="1.0em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mtext mathvariant="normal">Right Tail / Hyper</mtext><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr></mtable></mrow></mrow><annotation encoding="application/x-tex">
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mo>−</mo><mfrac><mrow><msub><mi>k</mi><mi>L</mi></msub><mo>−</mo><mi>x</mi></mrow><mrow><msub><mi>k</mi><mi>L</mi></msub><mo>−</mo><msub><mi>k</mi><mrow><mi>m</mi><mi>i</mi><mi>n</mi></mrow></msub></mrow></mfrac></mtd><mtd columnalign="left" style="text-align: left"><mrow><mtext mathvariant="normal">if </mtext><mspace width="0.333em"></mspace></mrow><mi>x</mi><mo>&lt;</mo><msub><mi>k</mi><mi>L</mi></msub><mspace width="1.0em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mtext mathvariant="normal">Left Tail / Frailty</mtext><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mn>0</mn></mtd><mtd columnalign="left" style="text-align: left"><mrow><mtext mathvariant="normal">if </mtext><mspace width="0.333em"></mspace></mrow><msub><mi>k</mi><mi>L</mi></msub><mo>≤</mo><mi>x</mi><mo>≤</mo><msub><mi>k</mi><mi>R</mi></msub><mspace width="1.0em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mtext mathvariant="normal">Routine Plateau</mtext><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mfrac><mrow><mi>x</mi><mo>−</mo><msub><mi>k</mi><mi>R</mi></msub></mrow><mrow><msub><mi>k</mi><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub><mo>−</mo><msub><mi>k</mi><mi>R</mi></msub></mrow></mfrac></mtd><mtd columnalign="left" style="text-align: left"><mrow><mtext mathvariant="normal">if </mtext><mspace width="0.333em"></mspace></mrow><mi>x</mi><mo>&gt;</mo><msub><mi>k</mi><mi>R</mi></msub><mspace width="1.0em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mtext mathvariant="normal">Right Tail / Hyper</mtext><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr></mtable></mrow></mrow><annotation encoding="application/x-tex">
 M(x) =
 \begin{cases}
    -\frac{k_L - x}{k_L - k_{min}} &amp; \text{if } x &lt; k_L \quad (\text{Left Tail / Frailty}) \\
@@ -156,7 +159,7 @@ M(x) =
 <p><em>Validated via symbolic computation (Wolfram Mathematica) for strict monotonicity.</em></p>
 </div>
 <div class="section level2">
-<h2 id="books-citation">📚 Citation<a class="anchor" aria-label="anchor" href="#books-citation"></a>
+<h2 id="id_-citation">📚 Citation<a class="anchor" aria-label="anchor" href="#id_-citation"></a>
 </h2>
 <p>If you use <code>prepkit</code> or the M-Score algorithm in your research, please cite:</p>
 <blockquote>
@@ -164,7 +167,7 @@ M(x) =
 </blockquote>
 </div>
 <div class="section level2">
-<h2 id="page_facing_up-license">📄 License<a class="anchor" aria-label="anchor" href="#page_facing_up-license"></a>
+<h2 id="id_-license">📄 License<a class="anchor" aria-label="anchor" href="#id_-license"></a>
 </h2>
 <p>MIT © Rui Gong (Tokyo Metropolitan Institute of Gerontology)</p>
 </div>
@@ -172,6 +175,7 @@ M(x) =
   </main><aside class="col-md-3"><div class="links">
 <h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
+<li><a href="https://cloud.r-project.org/package=prepkit" class="external-link">View on CRAN</a></li>
 <li><a href="https://github.com/Gonrui/prepkit/" class="external-link">Browse source code</a></li>
 <li><a href="https://github.com/Gonrui/prepkit/issues/" class="external-link">Report a bug</a></li>
 </ul>

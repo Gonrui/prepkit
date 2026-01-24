@@ -1,5 +1,9 @@
 # prepkit: Robust preprocessing for Digital Health
 
+[![CRAN
+status](https://www.r-pkg.org/badges/version/prepkit)](https://CRAN.R-project.org/package=prepkit)
+[![CRAN
+downloads](https://cranlogs.r-pkg.org/badges/grand-total/prepkit)](https://CRAN.R-project.org/package=prepkit)
 [![R-CMD-check](https://github.com/Gonrui/prepkit/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/Gonrui/prepkit/actions)
 [![Codecov test
 coverage](https://app.codecov.io/gh/Gonrui/prepkit/branch/main/graph/badge.svg)](https://app.codecov.io/gh/Gonrui/prepkit)
@@ -15,8 +19,8 @@ MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.or
 > **“When Z-Score fails, use M-Score.”**
 
 **`prepkit`** is a comprehensive R package designed for the
-prepkitocessing of longitudinal behavioral data, with a specific focus
-on **gerontology, digital health, and sensor analytics**.
+preprocessing of longitudinal behavioral data, with a specific focus on
+**gerontology, digital health, and sensor analytics**.
 
 Its flagship feature is the **M-Score (Mode-Range Normalization)**, a
 novel algorithm designed to detect anomalies in data characterized by
@@ -29,7 +33,13 @@ skewed distributions and high-frequency routine noise.
 `prepkit` is rigorously tested on **Linux, macOS, and Windows**, with
 compatibility verified up to **R 4.5 (development version)**.
 
-You can install the stable version from GitHub:
+Install the stable version from CRAN:
+
+``` r
+install.packages("prepkit")
+```
+
+You can install the development version from GitHub:
 
 ``` r
 # install.packages("devtools")
@@ -38,13 +48,13 @@ devtools::install_github("Gonrui/prepkit")
 
 ## 🚀 Key Algorithms
 
-| Function | Algorithm / Description | Use Case |
-|:---|:---|:---|
-| **`norm_mode_range`** | **M-Score (New!)** | Detects frailty/falls in elderly behavioral data by suppressing routine noise. |
-| **`trans_boxcox`** | **Robust Box-Cox** | MLE-optimized power transform. Auto-handles non-positive values. |
-| **`trans_yeojohnson`** | **Yeo-Johnson** | Power transform natively supporting negative values. |
-| **`norm_l2`** | **Spatial Sign** | Projects data onto a unit hypersphere (L2 Norm). Ideal for high-dim clustering. |
-| **`pp_plot`** | **Density Visualizer** | Instant “Before vs. After” visualization for normality checks. |
+| Function               | Algorithm / Description | Use Case                                                                        |
+|:-----------------------|:------------------------|:--------------------------------------------------------------------------------|
+| **`norm_mode_range`**  | **M-Score (New!)**      | Detects frailty/falls in elderly behavioral data by suppressing routine noise.  |
+| **`trans_boxcox`**     | **Robust Box-Cox**      | MLE-optimized power transform. Auto-handles non-positive values.                |
+| **`trans_yeojohnson`** | **Yeo-Johnson**         | Power transform natively supporting negative values.                            |
+| **`norm_l2`**          | **Spatial Sign**        | Projects data onto a unit hypersphere (L2 Norm). Ideal for high-dim clustering. |
+| **`pp_plot`**          | **Density Visualizer**  | Instant “Before vs. After” visualization for normality checks.                  |
 
 ## 📊 Quick Start: The Power of M-Score
 
@@ -78,17 +88,13 @@ The M-Score transforms data based on its **Mode Interval** (the routine
 plateau). Unlike Z-Score which penalizes stability (low variance),
 M-Score treats the most frequent range as the “Safe Zone” (Score = 0).
 
-The transformation function $`M(x)`$ is defined as:
+The transformation function $M(x)$ is defined as:
 
-``` math
-
-M(x) =
-\begin{cases}
-   -\frac{k_L - x}{k_L - k_{min}} & \text{if } x < k_L \quad (\text{Left Tail / Frailty}) \\
-   0 & \text{if } k_L \le x \le k_R \quad (\text{Routine Plateau}) \\
-   \frac{x - k_R}{k_{max} - k_R} & \text{if } x > k_R \quad (\text{Right Tail / Hyper})
-\end{cases}
-```
+$$M(x) = \begin{cases}
+{- \frac{k_{L} - x}{k_{L} - k_{min}}} & {{\text{if}\mspace{6mu}}x < k_{L}\quad\left( \text{Left\ Tail\ /\ Frailty} \right)} \\
+0 & {{\text{if}\mspace{6mu}}k_{L} \leq x \leq k_{R}\quad\left( \text{Routine\ Plateau} \right)} \\
+\frac{x - k_{R}}{k_{max} - k_{R}} & {{\text{if}\mspace{6mu}}x > k_{R}\quad\left( \text{Right\ Tail\ /\ Hyper} \right)} \\
+\end{cases}$$
 
 *Validated via symbolic computation (Wolfram Mathematica) for strict
 monotonicity.*

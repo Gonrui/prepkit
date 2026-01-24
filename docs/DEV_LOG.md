@@ -1,5 +1,22 @@
 # prepkit 开发日志 (Development Log)
 
+## Day 13: 版本对齐与文档更新 (2026-01-23)
+
+**状态**: ✅ 完成
+
+### 🚀 核心进展 (Key Progress)
+
+1.  **版本统一 (v0.1.1)**
+    - 统一 NEWS 与 CRAN-SUBMISSION 的版本号为 0.1.1。
+    - 保留 0.1.0 作为历史版本条目。
+2.  **CI 策略优化**
+    - GitHub Actions 默认仅跑 Linux（R release），节省日常成本。
+    - 重大更新时通过 `workflow_dispatch`
+      触发全矩阵（Linux/Mac/Windows）。
+3.  **文档站点更新**
+    - 重新构建 pkgdown，`docs/` 内容同步 0.1.1 状态。
+    - 新增 `CODEX.md` 作为项目进度追踪文档。
+
 ## Day 3: 自动化与云端部署 (2026-01-05)
 
 **耗时**: 1.5 小时 **状态**: ✅ 完成
@@ -61,9 +78,7 @@
 
 ### 🐛 问题修复 (Troubleshooting)
 
-- **Issue**:
-  [`covr::report()`](http://covr.r-lib.org/reference/report.md) 最初显示
-  0% 覆盖率。
+- **Issue**: `covr::report()` 最初显示 0% 覆盖率。
   - **原因**: `tests/testthat/test-norm_minmax.R` 文件缺失（未同步）。
   - **解决**: 使用
     [`usethis::use_test()`](https://usethis.r-lib.org/reference/use_r.html)
@@ -147,7 +162,7 @@
       (Auto-shift)。通过**重构 (Refactoring)** 提取了内部似然函数
       `boxcox_loglik`，实现了对数学极限分支的 100% 测试覆盖。
     - **`trans_yeojohnson`**: 实现了原生支持负数的幂变换，覆盖了
-      $`\lambda=0`$ 和 $`\lambda=2`$ 的特殊数学边界。
+      $\lambda = 0$ 和 $\lambda = 2$ 的特殊数学边界。
     - **`trans_log`**: 实现了带 Offset 的对数变换，引用 Bartlett (1947)
       理论。
 3.  **几何与可视化**
@@ -336,8 +351,8 @@
   - 公式表达专业，强调了 **“Derivative-zero Safety Zone”**
     (零导数安全区) 这一核心概念。
 - **Introduction 框架**:
-  - 确立了“漏斗式”结构：从智能手表/多模态背景 $`\to`$ Z-Score 痛点
-    $`\to`$ M-Score 解决方案。
+  - 确立了“漏斗式”结构：从智能手表/多模态背景 $\rightarrow$ Z-Score 痛点
+    $\rightarrow$ M-Score 解决方案。
 
 ------------------------------------------------------------------------
 
@@ -345,14 +360,11 @@
 
 **目标**: 让 `prepkit` 通过 `R CMD check`，并向 CRAN 发出第一版提交。
 
-运行
-[`devtools::check()`](https://devtools.r-lib.org/reference/check.html)
-
-修复所有 ERROR/WARNING
-
-填写 `cran-comments.md`
-
-提交发布！
+- 运行
+  [`devtools::check()`](https://devtools.r-lib.org/reference/check.html)
+- 修复所有 ERROR/WARNING
+- 填写 `cran-comments.md`
+- 提交发布！
 
 # Day 11: CRAN Submission工作回顾
 
@@ -392,11 +404,9 @@
 
 ### A. 身份与权益
 
-成功申请 **GitHub Education** (TMU 讲师身份)。
-
-激活 **GitHub Copilot Pro** (AI 结对编程)。
-
-激活 **JetBrains Educational License** (PyCharm Pro + CLion)。
+- 成功申请 **GitHub Education** (TMU 讲师身份)。
+- 激活 **GitHub Copilot Pro** (AI 结对编程)。
+- 激活 **JetBrains Educational License** (PyCharm Pro + CLion)。
 
 ### B. Python 环境 (PyCharm Professional)
 
@@ -430,11 +440,10 @@ Style)**: \* 左侧: Editor (代码) \* 右侧: SciView (绘图 + Data View) \*
 
 ## 📌 4. Next Steps (明日计划)
 
-**Python 原型**: 在 PyCharm 中尝试写出 M-Score 的 Python 版本核心函数。
-
-**C++ 练手**: 在 CLion 中写一个简单的向量计算 Demo，熟悉断点调试。
-
-**论文写作**: 继续推进 M-Score 的方法论部分。
+- **Python 原型**: 在 PyCharm 中尝试写出 M-Score 的 Python
+  版本核心函数。
+- **C++ 练手**: 在 CLion 中写一个简单的向量计算 Demo，熟悉断点调试。
+- **论文写作**: 继续推进 M-Score 的方法论部分。
 
 ------------------------------------------------------------------------
 
@@ -473,9 +482,7 @@ Submission** **标签**: \#CRAN \#QualityAssurance \#Documentation
 
 #### A. 拼写检查 (Spell Check)
 
-- 使用
-  [`spelling::spell_check_package()`](https://docs.ropensci.org/spelling//reference/spell_check_package.html)
-  扫描
+- 使用 `spelling::spell_check_package()` 扫描
 - 发现技术术语：`biomet` (期刊缩写), `doi` (标准缩写)
 - 更新词典 `inst/WORDLIST`，添加合法术语
 - **结果**: ✅ 无拼写错误
@@ -495,9 +502,7 @@ Submission** **标签**: \#CRAN \#QualityAssurance \#Documentation
 
 #### D. 测试覆盖率 (Code Coverage)
 
-- 使用
-  [`covr::package_coverage()`](http://covr.r-lib.org/reference/package_coverage.md)
-  全代码扫描
+- 使用 `covr::package_coverage()` 全代码扫描
 - **结果**: ✅ **100% 覆盖率**（所有 11 个源文件）
 
 #### E. R CMD check (CRAN 标准)
@@ -587,23 +592,17 @@ sim_gait_data.rda \* tests/ - 11 个测试文件 \* inst/WORDLIST - 拼写词典
 
 ### 立即可执行
 
-修正 DESCRIPTION
-
-完成本地全面检查
-
-更新 .Rbuildignore
-
-生成最终提交包
-
-**提交到 CRAN**: 访问 <https://cran.r-project.org/submit.html>
+- 修正 DESCRIPTION
+- 完成本地全面检查
+- 更新 .Rbuildignore
+- 生成最终提交包
+- **提交到 CRAN**: 访问 <https://cran.r-project.org/submit.html>
 
 ### 等待 CRAN 审查期间
 
-继续推进 M-Score 论文写作
-
-准备 Python 版本的原型代码
-
-设计补充实验（真实数据验证）
+- 继续推进 M-Score 论文写作
+- 准备 Python 版本的原型代码
+- 设计补充实验（真实数据验证）
 
 ------------------------------------------------------------------------
 

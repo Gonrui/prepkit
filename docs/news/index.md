@@ -2,7 +2,9 @@
 
 ## prepkit 0.1.1
 
-- Version bump for CRAN submission.
+CRAN release: 2026-01-23
+
+- Released on CRAN.
 
 ## prepkit 0.1.0
 
