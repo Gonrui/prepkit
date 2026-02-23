@@ -1,5 +1,35 @@
 # prepkit 开发日志 (Development Log)
 
+## Day 16: QC 窗口派生与结构统计 (2026-02-23)
+
+**状态**: ✅ 完成 (`qc_enable_window` + `qc_enable_window_stats`)
+
+### 🚀 今日进展
+
+1. **新增窗口派生使能函数：`qc_enable_window()`**
+   - 新建 `R/qc_enable_window.R`，实现按 `session/day` 两种粒度派生窗口索引。
+   - 支持 `window_secs = NULL`（整段窗口）和正数秒级滑窗（分箱编号）。
+   - 统一时间转换逻辑：兼容 `POSIXct` / `Date` / numeric / 可转换字符，不修改 `raw`。
+   - 时区策略明确：`tz` 参数优先，其次 `meta$tz`，最后回退 `UTC`。
+   - 缺失 `time_col` 时记录最小派生信息并写入日志，保持 enable 阶段“只派生不评估”边界。
+   - 产出 `derived$window`：包含 `window_id`（逐行）与 `windows`（窗口汇总表）。
+
+2. **新增窗口结构统计使能函数：`qc_enable_window_stats()`**
+   - 新建 `R/qc_enable_window_stats.R`，在 `derived$window` 基础上生成每个窗口的结构统计。
+   - 强制前置条件：若未先运行 `qc_enable_window()`，直接报错并阻止继续。
+   - 输出每窗关键指标：`n_rows`、`na_time_n`、`unique_time_n`、`start/end`、`span_secs`、`dt_min/median/max`。
+   - 仅写入 `derived$window_stats` 并追加审计日志，不触碰 `metrics/flags/decision`。
+
+3. **一致性与工程约束**
+   - 两个函数均通过 `qc_set()` 写入，遵守 `qc_enable` 阶段写权限守卫。
+   - 日志统一走 `qc_log_event()`，记录参数摘要和派生结果规模，便于审计追踪。
+   - 保持“模块化追加”策略（`modifyList`），避免覆盖其他 `derived` 模块。
+
+### 🔮 下一步计划
+
+- 补充 `qc_enable_window*` 的 `testthat` 用例（含缺失时间列、跨日边界、窗口长度非法值）。
+- 评估是否将窗口统计进一步标准化为后续 `qc_assess` 的输入契约。
+
 ## Day 15: QC enable 与日志体系完善 (2026-01-27)
 
 **状态**: ✅ 完成 (enable-time + 日志/打印体系)
