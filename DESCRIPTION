@@ -2,12 +2,11 @@ Package: prepkit
 Type: Package
 Title: Data Normalization and Transformation
 Version: 0.1.1
-Authors@R: 
-    person(given = 'Rui', 
-           family = 'Gong', 
-           email = 'gongrui4432@gmail.com', 
-           role = c('aut', 'cre'), 
-           comment = c(ORCID = '0000-0001-5112-5696'))
+Authors@R: person(given = 'Rui',
+    family = 'Gong',
+    email = 'gongrui4432@gmail.com',
+    role = c('aut', 'cre'),
+    comment = c(ORCID = '0000-0001-5112-5696'))
 Description: Provides functions for data normalization and transformation in
     preprocessing stages. Implements scaling methods (min-max, Z-score, L2
     normalization) and power transformations (Box-Cox, Yeo-Johnson). Box-Cox
@@ -21,7 +20,11 @@ RoxygenNote: 7.3.3
 URL: https://gonrui.github.io/prepkit/, https://github.com/Gonrui/prepkit/
 BugReports: https://github.com/Gonrui/prepkit/issues/
 Language: en-US
-Suggests: testthat (>= 3.0.0)
+Suggests:
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0)
+VignetteBuilder: knitr
 Config/testthat/edition: 3
 Imports: ggplot2
 Depends: R (>= 3.5)

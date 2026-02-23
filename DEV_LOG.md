@@ -1,5 +1,110 @@
 # prepkit 开发日志 (Development Log)
 
+## Day 16: QC 窗口派生与结构统计 (2026-02-23)
+
+**状态**: ✅ 完成 (`qc_enable_window` + `qc_enable_window_stats`)
+
+### 🚀 今日进展
+
+1. **新增窗口派生使能函数：`qc_enable_window()`**
+   - 新建 `R/qc_enable_window.R`，实现按 `session/day` 两种粒度派生窗口索引。
+   - 支持 `window_secs = NULL`（整段窗口）和正数秒级滑窗（分箱编号）。
+   - 统一时间转换逻辑：兼容 `POSIXct` / `Date` / numeric / 可转换字符，不修改 `raw`。
+   - 时区策略明确：`tz` 参数优先，其次 `meta$tz`，最后回退 `UTC`。
+   - 缺失 `time_col` 时记录最小派生信息并写入日志，保持 enable 阶段“只派生不评估”边界。
+   - 产出 `derived$window`：包含 `window_id`（逐行）与 `windows`（窗口汇总表）。
+
+2. **新增窗口结构统计使能函数：`qc_enable_window_stats()`**
+   - 新建 `R/qc_enable_window_stats.R`，在 `derived$window` 基础上生成每个窗口的结构统计。
+   - 强制前置条件：若未先运行 `qc_enable_window()`，直接报错并阻止继续。
+   - 输出每窗关键指标：`n_rows`、`na_time_n`、`unique_time_n`、`start/end`、`span_secs`、`dt_min/median/max`。
+   - 仅写入 `derived$window_stats` 并追加审计日志，不触碰 `metrics/flags/decision`。
+
+3. **一致性与工程约束**
+   - 两个函数均通过 `qc_set()` 写入，遵守 `qc_enable` 阶段写权限守卫。
+   - 日志统一走 `qc_log_event()`，记录参数摘要和派生结果规模，便于审计追踪。
+   - 保持“模块化追加”策略（`modifyList`），避免覆盖其他 `derived` 模块。
+
+### 🔮 下一步计划
+
+- 补充 `qc_enable_window*` 的 `testthat` 用例（含缺失时间列、跨日边界、窗口长度非法值）。
+- 评估是否将窗口统计进一步标准化为后续 `qc_assess` 的输入契约。
+
+## Day 15: QC enable 与日志体系完善 (2026-01-27)
+
+**状态**: ✅ 完成 (enable-time + 日志/打印体系)
+
+### 🚀 核心进展 (Key Progress)
+
+1. **QC 日志与阶段守卫 (Audit + Guardrails)**
+   - 增强 `qc_log_*` 体系：新增 `qc_log_event()` 与 `qc_param_summary()`，记录轻量参数摘要并避免大对象泄露。
+   - 完成阶段写权限守卫：`qc_stage_normalize()` + `qc_stage_assert_write()` + `qc_set()`。
+
+2. **QC enable: 时间戳诊断 (`qc_enable_time`)**
+   - 仅派生诊断信息，不写入 metrics/flags/decision。
+   - 自动处理 `POSIXct` / `Date` / numeric / 可转换类型；输出缺失数、重复数、单调性与 dt 统计。
+   - 若 `time_col` 不存在，记录最小派生信息并写入日志。
+
+3. **易读输出 (Print/Summary Methods)**
+   - 为 `qc_bundle` 实现 `print()` 与 `summary()`，用于快速查看 raw/meta/derived/metrics/flags/log 状态。
+
+4. **文档生成**
+   - 新增多项 `man/*.Rd`，覆盖 `qc_*` 内部函数与 S3 打印/汇总方法。
+
+### 🔮 下一步计划 (Next Steps)
+
+- 扩展 enable 系列：补充 `qc_enable_*` 派生器（如缺失、窗口、采样率等）。
+- 在 `NAMESPACE` 中对外暴露必要的 enable 函数与 S3 方法。
+
+## Day 14: QC 框架基础设施搭建 (2026-01-26)
+
+**状态**: ✅ 完成 (QC 对象规范 + 核心实现)
+
+### 🚀 核心进展 (Key Progress)
+
+1. **QC 框架设计 (Quality Control Framework)**
+   - 创建 `inst/dev/` 目录作为开发文档存放区
+   - 编写 `qc_object_spec.md` 规范文档，定义 QC pipeline 的核心数据结构
+
+2. **`qc_bundle` 对象规范 (Object Specification)**
+   - **设计理念**: 单一载体对象 (Single Carrier Object)
+   - **三阶段边界**: enable (预处理) → assess (评估) → decide (决策)
+   - **核心原则**:
+     * Raw data 初始化后完全只读 (read-only)
+     * 各阶段严格的写权限控制 (stage-based write permissions)
+     * 可审计的操作日志 (append-only audit log)
+   - **必需字段**: `raw`, `meta`, `derived`, `metrics`, `flags`, `decision`, `reasons`, `log`
+
+3. **核心实现 (`R/qc_bundle.R`)**
+   - **初始化函数**: `qc_init()` - 创建 qc_bundle 对象
+   - **日志系统**:
+     * `qc_log_init()` - 初始化审计日志
+     * `qc_log_add()` - 追加日志条目（时间戳 + 阶段 + 函数 + 详情）
+   - **Stage 守卫机制 (Stage Guardrails)**:
+     * `qc_stage_normalize()` - 阶段名称规范化
+     * `qc_stage_assert_write()` - 写权限检查
+     * `qc_set()` - 安全字段赋值器
+   - **权限矩阵 (Permission Matrix)**:
+     * `init`: 可写所有字段
+     * `qc_enable`: 可写 `derived`, `meta`, `log`
+     * `qc_assess`: 可写 `metrics`, `flags`, `log`
+     * `qc_decide`: 可写 `decision`, `reasons`, `log`
+     * `post_validate`: 可写 `log`
+   - **全局规则**: `raw` 字段在初始化后永久只读
+
+### 📝 技术亮点 (Technical Highlights)
+
+- **防御性设计**: 通过编程式约束（而非文档约定）强制执行阶段边界
+- **可扩展性**: S3 对象结构便于未来支持高维数据（矩阵/数组）
+- **可审计性**: 每个操作自动记录到 `log` 字段，符合科研数据治理要求
+- **单元粒度**: 所有 QC 输出必须声明评估单元 (subject/session/day/window/channel)
+
+### 🔮 下一步计划 (Next Steps)
+
+- **Day 15**: QC-enabling 函数实现
+  - 实现 `qc_derive_*` 系列函数（窗口划分、缺失检测、游程编码等）
+  - 为 QC assessment 阶段准备派生对象
+
 ## Day 13: 版本对齐与文档更新 (2026-01-23)
 
 **状态**: ✅ 完成
